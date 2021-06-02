@@ -1,16 +1,32 @@
 body {
     font-family: 'Roboto Mono', monospace;
+    width: 100%;
+    height: 100%;
     margin: 0;
-    background: #161616;
+    /*background: #161616;*/
+	background: linear-gradient(-45deg, #252525, #000000, #252525, #000000);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite; 
 }
-
+/*fondo animado*/
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
 /*marca de agua*/
 .mark {
     display: inline-block;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     font-size: 35vw;
     text-align: top left;
     margin: 0;
@@ -19,29 +35,13 @@ body {
     color: #ffffff;
 }
 
-/*iconos*/
-
-.icons {
-    display: grid;
-    position: absolute;
-    width: 2rem;
-    height: 2rem;
-    box-sizing: border-box;
-    border: solid 0.5rem #179cac;
-    border-radius: 0.5rem;
-}
-
-.icon:first-child{
-    
-}
-
  /*sección*/
 .grid {
     display: grid;
     width: 100%;
     height: 100%;
-    grid-template-columns: 5fr 15fr 1fr;
-    grid-template-rows: 100%;
+    grid-template-columns: 6rem 1fr 6rem;
+    grid-template-rows: auto;
     grid-template-areas: 
     "main section nav";
 
@@ -81,7 +81,7 @@ a:link {
     display: inline-block;
     writing-mode: vertical-lr;
     transform:rotate(180deg);
-    padding: 25px 10px;
+    padding: 20px 10px;
 }
 
 .main {
@@ -101,7 +101,53 @@ a:link {
 /*movil*/
 /*Portrait*/
 /*Default*/
-@media (max-width: 575.98px)and (orientation:portrait) {
-   
+@media only screen and (max-width: 400px) {
+    body {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(-45deg, #252525, #000000, #252525, #000000);
+        background-size: 200% 200%;
+        animation: gradient 7s ease infinite; 
     }
- }
+
+    .grid{
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 3rem 1fr 7rem;
+        grid-template-areas:
+        "nav"
+        "section"
+        "main";
+    }
+
+    .section {
+    }
+
+    .nav{
+        margin-left:-30px
+    }
+
+    .nav ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+
+    }
+    
+
+    .nav ul li {
+        list-style-type: none;
+        writing-mode: unset;
+        transform: rotate(0);
+        padding: 0px 5px;
+    }
+
+    .main {
+        writing-mode: unset;
+        transform: rotate(0deg);
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
